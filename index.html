@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abdul Aziz Fuzail Mohammed</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Abdul Aziz Fuzail Mohammed: accounting and business analytics researcher working on AI, fair value accounting, digital assets and ESG disclosure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column with a narrow left "ledger" margin that carries dates and paper status, like the margin of a working-paper list. */
+:root {
+  --paper: #f5f7f5;
+  --ink: #18211f;
+  --muted: #5b6a66;
+  --rule: #d5ddd9;
+  --ledger: #1f5f5b;
+  --ledger-soft: #e3eeec;
+  --pub: #1f5f5b;
+  --review: #8a5a12;
+  --review-soft: #f6ecd9;
+  --sub: #3f4f86;
+  --sub-soft: #e5e8f4;
+  --wip: #5b6a66;
+  --wip-soft: #e8ecea;
+  --display: "Spectral", Georgia, "Times New Roman", serif;
+  --body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #111715; --ink: #e2e9e6; --muted: #98a8a3; --rule: #27322f;
+    --ledger: #7cc0b6; --ledger-soft: #18302d;
+    --pub: #7cc0b6; --review: #e0b26a; --review-soft: #33291a;
+    --sub: #a9b5ec; --sub-soft: #1f2440; --wip: #98a8a3; --wip-soft: #1d2523;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #111715; --ink: #e2e9e6; --muted: #98a8a3; --rule: #27322f;
+  --ledger: #7cc0b6; --ledger-soft: #18302d;
+  --pub: #7cc0b6; --review: #e0b26a; --review-soft: #33291a;
+  --sub: #a9b5ec; --sub-soft: #1f2440; --wip: #98a8a3; --wip-soft: #1d2523;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 880px; margin: 0 auto; padding-block: 56px 72px; display: grid; gap: 56px; }
+a { color: var(--ledger); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--ledger); outline-offset: 3px; border-radius: 2px; }
+
+/* Header */
+header { display: grid; gap: 18px; }
+.eyebrow { font-family: var(--mono); font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(34px, 6vw, 52px); line-height: 1.08; margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+.thesis { font-family: var(--display); font-size: clamp(19px, 2.6vw, 23px); line-height: 1.45; margin: 0; max-width: 40ch; color: var(--ink); }
+.thesis em { font-style: italic; color: var(--ledger); }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--muted); font-size: 15px; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 500 14px var(--body); padding: 9px 14px; border-radius: 6px; border: 1px solid var(--rule); color: var(--ink); text-decoration: none; background: transparent; cursor: pointer; }
+.btn:hover { border-color: var(--ledger); color: var(--ledger); }
+.btn.primary { background: var(--ledger); border-color: var(--ledger); color: var(--paper); }
+.btn.primary:hover { color: var(--paper); filter: brightness(1.08); }
+.notice { border-left: 3px solid var(--ledger); background: var(--ledger-soft); padding: 12px 16px; border-radius: 0 6px 6px 0; font-size: 15px; max-width: 62ch; }
+
+/* Sections */
+section { display: grid; gap: 22px; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 26px; margin: 0; padding-bottom: 10px; border-bottom: 1px solid var(--rule); text-wrap: balance; }
+p { margin: 0; max-width: 66ch; }
+.lede { color: var(--muted); }
+
+/* Research threads */
+.threads { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+.thread { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.thread h3 { font: 600 17px var(--body); margin: 0; }
+.thread p { font-size: 15px; color: var(--muted); }
+.code { font-family: var(--mono); font-size: 13px; color: var(--ledger); }
+
+/* Ledger list (papers, experience) */
+.ledger { display: grid; gap: 0; }
+.entry { display: grid; grid-template-columns: 132px 1fr; gap: 20px; padding: 18px 0; border-top: 1px solid var(--rule); }
+.entry:first-child { border-top: 0; padding-top: 4px; }
+.margin { font-family: var(--mono); font-size: 13px; color: var(--muted); display: grid; gap: 8px; align-content: start; }
+.body { display: grid; gap: 6px; min-width: 0; }
+.title { font-family: var(--display); font-size: 19px; line-height: 1.35; font-weight: 600; margin: 0; text-wrap: pretty; }
+.authors { font-size: 14.5px; color: var(--muted); }
+.note { font-size: 15px; }
+.status { justify-self: start; font: 500 11.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+.s-pub { color: var(--pub); background: var(--ledger-soft); }
+.s-review { color: var(--review); background: var(--review-soft); }
+.s-sub { color: var(--sub); background: var(--sub-soft); }
+.s-wip { color: var(--wip); background: var(--wip-soft); }
+.role { font: 600 17px var(--body); margin: 0; }
+.org { color: var(--muted); font-size: 15px; }
+ul.points { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 4px; font-size: 15px; max-width: 66ch; }
+
+/* Education + skills */
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 36px; }
+.edu { display: grid; gap: 14px; }
+.edu div { display: grid; gap: 2px; }
+.edu strong { font-weight: 600; }
+.edu span { color: var(--muted); font-size: 14.5px; }
+.gpa { font-family: var(--mono); font-size: 13px; color: var(--ledger); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { font-size: 13.5px; padding: 5px 10px; border: 1px solid var(--rule); border-radius: 999px; }
+.tag-group { display: grid; gap: 8px; }
+.tag-group h3 { font: 600 13px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0; }
+
+/* Contact */
+.contact { display: grid; gap: 14px; }
+.contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.addr { font-family: var(--mono); font-size: 15px; user-select: all; overflow-wrap: anywhere; }
+.copied { font-size: 13px; color: var(--ledger); }
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule); padding-top: 18px; }
+
+@media (max-width: 560px) {
+  .wrap { padding-block: 32px 48px; gap: 44px; }
+  .entry { grid-template-columns: 1fr; gap: 8px; }
+  .margin { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: border-color .15s, color .15s, filter .15s; }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Accounting &amp; Business Analytics · Prospective PhD, Fall 2027</div>
+    <h1>Abdul Aziz Fuzail Mohammed</h1>
+    <p class="thesis">I study how analytics, AI and information systems shape the way firms measure and disclose <em>hard-to-value information</em>, and how investors and professionals make judgments with it.</p>
+    <div class="meta">
+      <span>MBA, Accounting &amp; Business Analytics, University of Scranton</span>
+      <span>Pennsylvania, USA</span>
+    </div>
+    <div class="links">
+      <a class="btn primary" href="#contact">Contact</a>
+      <a class="btn" href="https://www.linkedin.com/in/abdul-aziz-fuzail-mohammed-10b317308" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="#papers">Papers</a>
+    </div>
+    <p class="notice">I am applying to PhD programs in Accounting, Accounting Information Systems and Business Analytics for Fall 2027, and I welcome conversations with faculty working on AI, analytics and disclosure in accounting.</p>
+  </header>
+
+  <section aria-labelledby="agenda">
+    <h2 id="agenda">Research agenda</h2>
+    <p class="lede">My work so far follows two empirical threads, connected by a methods interest in explainable and verifiable AI.</p>
+    <div class="threads">
+      <div class="thread">
+        <span class="code">ASC 820 · ASC 350-60</span>
+        <h3>Digital assets and fair value</h3>
+        <p>How firms choose a principal market and pricing source for crypto assets now measured at fair value, and how reliable those measurements are.</p>
+      </div>
+      <div class="thread">
+        <span class="code">ESG · mandatory disclosure</span>
+        <h3>ESG disclosure and markets</h3>
+        <p>Whether mandatory disclosure changes how markets react to ESG news, including news that spreads on social media.</p>
+      </div>
+      <div class="thread">
+        <span class="code">XAI · blockchain · LLMs</span>
+        <h3>Trustworthy AI in accounting</h3>
+        <p>Explainable machine learning for prediction, and verifiable pipelines that make AI outputs auditable before people rely on them.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="papers" id="papers">
+    <h2>Papers</h2>
+    <div class="ledger">
+      <article class="entry">
+        <div class="margin"><span class="status s-pub">Published</span></div>
+        <div class="body">
+          <p class="title">Crypto Fair Value Reliability Score (CFV-RS): An ASC 820–Compliant Method to Select Principal Markets and Pricing Sources for ASC 350-60 Reporting</p>
+          <p class="note">A reliability score for choosing the principal market and pricing source when measuring crypto assets at fair value.</p>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="margin"><span class="status s-review">Under review</span></div>
+        <div class="body">
+          <p class="title">Digital Assets in the MENA Region</p>
+          <p class="authors">With Ahmed Gomaa, Satya P. Chattopadhyay and Sefer Balikci</p>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="margin"><span class="status s-sub">Submitted</span><span>Preprint</span></div>
+        <div class="body">
+          <p class="title">SmartProof: Verifiable Pipeline for LLM Smart Contract Synthesis, Auditing, and Trust Scoring</p>
+          <p class="authors">With Sheeza Nazeer and Adil Amin</p>
+          <p class="note">Turns plain-language agreement text into a smart contract with a large language model, then audits it and assigns a trust score before deployment. <a href="https://lnkd.in/eyrwwhgP" target="_blank" rel="noopener">Read the preprint</a></p>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="margin"><span class="status s-sub">Submitted</span><span>Poster</span></div>
+        <div class="body">
+          <p class="title">Enhancing Trust in AI-Driven Decision Support Systems through Blockchain-Enabled Data Integrity and Explainability</p>
+          <p class="authors">With Sheeza Nazeer · Advisor: Wesam Alramadeen</p>
+          <p class="note">Presented as a research poster at the University of Scranton.</p>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="margin"><span class="status s-wip">In progress</span></div>
+        <div class="body">
+          <p class="title">ESG News on Social Media, Mandatory Disclosure and Market Reactions</p>
+          <p class="authors">With Ahmed Gomaa, Sara Sabry and co-author</p>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="margin"><span class="status s-wip">In progress</span></div>
+        <div class="body">
+          <p class="title">Using ESG and Financial Indicators to Predict Corporate Financial Performance: Evidence from Explainable Machine Learning and AI</p>
+          <p class="authors">With Ahmed Gomaa, Sara Sabry and co-author</p>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="margin"><span class="status s-wip">In progress</span></div>
+        <div class="body">
+          <p class="title">Principal Market Selection via Dynamic Weight Adapter</p>
+          <p class="authors">With Sheeza Nazeer</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="experience">
+    <h2 id="experience">Research and professional experience</h2>
+    <div class="ledger">
+      <article class="entry">
+        <div class="margin"><span>Aug 2024 –<br>May 2025</span></div>
+        <div class="body">
+          <p class="role">Graduate Research Assistant</p>
+          <p class="org">Kania School of Management, University of Scranton</p>
+          <ul class="points">
+            <li>Lead US data collection for a multi-country ESG study covering Egypt, Vietnam, the UK and the USA, 2018–2025.</li>
+            <li>Built firm-year panels in Bloomberg (BQL): cleaned and merged datasets, prepared financial variables, coded industries and collected annual reports.</li>
+            <li>Supported faculty research on Sharia compliance in digital assets, riba in modern finance, and MENA digital-asset disclosures.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="margin"><span>Aug 2025 –<br>present</span></div>
+        <div class="body">
+          <p class="role">Finance and Operations Research Analyst</p>
+          <p class="org">Balajee Trade Link, USA</p>
+          <ul class="points">
+            <li>Analyze pricing, inventory, demand and purchasing patterns for a wholesale import and distribution company.</li>
+            <li>Build KPI reporting on sales movement, product performance and order planning for management.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="margin"><span>Jan –<br>Apr 2025</span></div>
+        <div class="body">
+          <p class="role">Tax Professional</p>
+          <p class="org">Liberty Tax, Scranton, PA</p>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="margin"><span>Jun 2020 –<br>May 2023</span></div>
+        <div class="body">
+          <p class="role">Data Accountant and Analyst</p>
+          <p class="org">Apricot High School, Hyderabad, India</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="edu">
+    <h2 id="edu">Education and skills</h2>
+    <div class="two">
+      <div class="edu">
+        <div><strong>MBA, Accounting &amp; Business Analytics</strong><span>University of Scranton · 2023–2025</span><span class="gpa">GPA 3.89 / 4.0</span></div>
+        <div><strong>M.Com, Business &amp; Finance</strong><span>Osmania University, Hyderabad · 2021–2023</span><span class="gpa">CGPA 8.5 / 10</span></div>
+        <div><strong>B.Com, Accounting &amp; Business</strong><span>Osmania University, Hyderabad · 2018–2021</span><span class="gpa">CGPA 8.5 / 10</span></div>
+        <div><strong>Beta Alpha Psi</strong><span>Lifetime member · Pursuing CPA licensure</span></div>
+      </div>
+      <div class="edu">
+        <div class="tag-group">
+          <h3>Data and research</h3>
+          <div class="tags"><span class="tag">Bloomberg (BQL)</span><span class="tag">Panel data construction</span><span class="tag">Annual-report collection</span><span class="tag">Machine learning</span><span class="tag">Explainable AI</span></div>
+        </div>
+        <div class="tag-group">
+          <h3>Accounting</h3>
+          <div class="tags"><span class="tag">Fair value (ASC 820)</span><span class="tag">ESG reporting</span><span class="tag">Financial reporting</span><span class="tag">Tax preparation</span></div>
+        </div>
+        <div class="tag-group">
+          <h3>Tools</h3>
+          <div class="tags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">QuickBooks</span><span class="tag">Blockchain / smart contracts</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="contact" id="contact">
+    <h2>Contact</h2>
+    <div class="contact">
+      <p>I'm glad to hear from faculty and researchers about PhD fit, data, or collaboration.</p>
+      <div class="contact-row">
+        <a class="btn primary" href="https://www.linkedin.com/in/abdul-aziz-fuzail-mohammed-10b317308" target="_blank" rel="noopener">Message me on LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>Abdul Aziz Fuzail Mohammed · Updated October 2026</footer>
+</div>
+</body>
+</html>
