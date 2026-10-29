@@ -130,6 +130,18 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule)
 .is-dark .theme-btn .i-sun { display: block; }
 .is-dark .theme-btn .i-moon { display: none; }
 
+/* Centered header */
+header { justify-items: center; text-align: center; position: relative; }
+header .meta, header .links { justify-content: center; }
+header .notice { border-left: 0; border-radius: 8px; text-align: center; }
+header .thesis { max-width: 46ch; text-wrap: balance; }
+.topbar { justify-content: center; width: 100%; }
+.topbar .theme-btn { position: absolute; top: -6px; right: 0; }
+@media (max-width: 760px) {
+  .topbar { flex-direction: column-reverse; gap: 14px; }
+  .topbar .theme-btn { position: static; }
+}
+
 /* Intro deck: a short sequence of statement slides under the name, swipeable, with keyboard and dot controls. */
 :root { --deck-bg: #15201d; --deck-ink: #edf2ef; --deck-muted: #a9bab4; --deck-accent: #8fd0c5; --deck-rule: #2c3a36; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --deck-bg: #1a2522; --deck-rule: #33433e; } }
