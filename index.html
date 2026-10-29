@@ -121,6 +121,15 @@ ul.points { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 4px; font-s
 .copied { font-size: 13px; color: var(--ledger); }
 footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule); padding-top: 18px; }
 
+/* Theme toggle */
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.theme-btn { display: inline-flex; align-items: center; gap: 7px; flex: none; font: 500 12.5px var(--mono); letter-spacing: .04em; color: var(--muted); background: transparent; border: 1px solid var(--rule); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.theme-btn:hover { color: var(--ledger); border-color: var(--ledger); }
+.theme-btn svg { width: 14px; height: 14px; }
+.theme-btn .i-sun { display: none; }
+.is-dark .theme-btn .i-sun { display: block; }
+.is-dark .theme-btn .i-moon { display: none; }
+
 /* Intro deck: a short sequence of statement slides under the name, swipeable, with keyboard and dot controls. */
 :root { --deck-bg: #15201d; --deck-ink: #edf2ef; --deck-muted: #a9bab4; --deck-accent: #8fd0c5; --deck-rule: #2c3a36; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --deck-bg: #1a2522; --deck-rule: #33433e; } }
@@ -164,48 +173,15 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule)
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Accounting &amp; Business Analytics · Prospective PhD, Fall 2027</div>
-    <h1>Abdul Aziz Fuzail Mohammed</h1>
-    <div class="deck" role="region" aria-roledescription="carousel" aria-label="About my PhD goals">
-      <div class="deck-track" id="deck-track" tabindex="0">
-      <article class="slide" role="group" aria-roledescription="slide" aria-label="1 of 6: The goal">
-        <div class="slide-top"><b>The goal</b><span>01 / 06</span></div>
-        <h3>A research career built on <em>measurement people can trust</em>.</h3>
-        <div class="slide-body"><p>I am applying for a <strong>fully funded PhD</strong> in Accounting, Accounting Information Systems or Business Analytics, starting <strong>Fall 2027</strong> in the United States or Canada.</p><p>Beyond the degree, I want to spend my career producing research that standard-setters, auditors and firms can actually use, and teaching the next generation of accountants to work confidently with data and AI.</p></div>
-      </article>
-      <article class="slide" role="group" aria-roledescription="slide" aria-label="2 of 6: The PhD">
-        <div class="slide-top"><b>The PhD</b><span>02 / 06</span></div>
-        <h3>Where accounting meets <em>analytics and AI</em>.</h3>
-        <div class="slide-body"><p>My doctoral focus is how firms <strong>measure and disclose hard-to-value information</strong>: digital assets, ESG performance and AI-generated outputs. And how investors, auditors and managers make judgments when that information is uncertain.</p></div>
-      </article>
-      <article class="slide" role="group" aria-roledescription="slide" aria-label="3 of 6: The idea">
-        <div class="slide-top"><b>The idea</b><span>03 / 06</span></div>
-        <h3>When a number is hard to value, its <em>reliability</em> matters as much as the number.</h3>
-        <div class="slide-body"><div class="slide-cols"><div><span>Digital assets</span>Which market and price should a firm trust when measuring crypto at fair value? My published CFV-RS score answers this.</div><div><span>ESG</span>Do firms’ sustainability words match their numbers, and does mandatory disclosure change how markets react?</div><div><span>Verifiable AI</span>Can AI outputs be explained and audited before people rely on them? SmartProof is my first step.</div></div></div>
-      </article>
-      <article class="slide" role="group" aria-roledescription="slide" aria-label="4 of 6: The skills">
-        <div class="slide-top"><b>The skills</b><span>04 / 06</span></div>
-        <h3>Trained as an accountant. Working as a <em>data researcher</em>.</h3>
-        <div class="slide-body"><div class="slide-cols"><div><span>Accounting</span>Fair value (ASC 820, 350-60), ESG reporting, financial reporting, tax. Pursuing CPA licensure.</div><div><span>Data</span>Bloomberg BQL, firm-year panel construction, Python, SQL, machine learning and explainable AI.</div><div><span>Systems</span>Blockchain and smart contracts, LLM pipelines, Power BI dashboards, operations analytics.</div></div></div>
-      </article>
-      <article class="slide" role="group" aria-roledescription="slide" aria-label="5 of 6: How I work">
-        <div class="slide-top"><b>How I work</b><span>05 / 06</span></div>
-        <h3>Start from a real reporting problem. <em>Build the evidence myself.</em></h3>
-        <div class="slide-body"><p>I begin with questions practitioners actually face, then build the data from the ground up. Most recently, that meant a <strong>multi-country ESG panel</strong> spanning the US, UK, Egypt and Vietnam. I favour transparent, explainable methods over black boxes, and I work best in teams: every paper I have written is collaborative, across faculty and institutions.</p></div>
-      </article>
-      <article class="slide" role="group" aria-roledescription="slide" aria-label="6 of 6: What I believe">
-        <div class="slide-top"><b>What I believe</b><span>06 / 06</span></div>
-        <h3>Accounting numbers are <em>promises</em> to the public.</h3>
-        <div class="slide-body"><p>Technology should make those promises <strong>easier to verify, not easier to fake</strong>. I believe rigor comes before speed, that ethics is part of measurement rather than an afterthought, and that good research should be clear enough for a practitioner to act on.</p></div>
-      </article>
-      </div>
-      <div class="deck-nav">
-        <button class="deck-btn" id="deck-prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3 5 8l5 5"/></svg></button>
-        <div class="deck-dots" id="deck-dots"></div>
-        <button class="deck-btn" id="deck-next" type="button" aria-label="Next slide"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 3 5 5-5 5"/></svg></button>
-        <span class="deck-count" id="deck-count" aria-live="polite">01 / 06</span>
-      </div>
+    <div class="topbar">
+      <div class="eyebrow">Accounting &amp; Business Analytics · Prospective PhD, Fall 2027</div>
+      <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch to dark theme">
+        <svg class="i-moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3 3l1 1M12 12l1 1M3 13l1-1M12 4l1-1"/></svg>
+        <span id="theme-label">Dark</span>
+      </button>
     </div>
+    <h1>Abdul Aziz Fuzail Mohammed</h1>
     <p class="thesis">I study how analytics, AI and information systems shape the way firms measure and disclose <em>hard-to-value information</em>, and how investors and professionals make judgments with it.</p>
     <div class="meta">
       <span>MBA, Accounting &amp; Business Analytics, University of Scranton</span>
@@ -216,8 +192,59 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule)
       <a class="btn" href="https://www.linkedin.com/in/abdul-aziz-fuzail-mohammed-10b317308" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn" href="#papers">Papers</a>
     </div>
-    <p class="notice">I am applying to PhD programs in Accounting, Accounting Information Systems and Business Analytics for Fall 2027, and I welcome conversations with faculty working on AI, analytics and disclosure in accounting.</p>
+    <p class="notice">I am applying to PhD programs in Accounting Information Systems, Operations Research and Analytics for Fall 2027, and I welcome conversations with faculty working on AI, analytics and disclosure in accounting.</p>
   </header>
+
+  <div class="deck" role="region" aria-roledescription="carousel" aria-label="About my PhD goals">
+    <div class="deck-track" id="deck-track" tabindex="0">
+    <article class="slide" role="group" aria-roledescription="slide" aria-label="1 of 8: The goal">
+      <div class="slide-top"><b>The goal</b><span>01 / 08</span></div>
+      <h3>A research career built on <em>measurement people can trust</em>.</h3>
+      <div class="slide-body"><p>I am applying for a <strong>PhD in Accounting Information Systems, Operations Research and Analytics</strong>, starting <strong>Fall 2027</strong>.</p><p>Beyond the degree, I want to produce research that standard-setters, auditors and firms can actually use, and to teach the next generation of accountants to work confidently with data and AI.</p></div>
+    </article>
+    <article class="slide" role="group" aria-roledescription="slide" aria-label="2 of 8: The PhD">
+      <div class="slide-top"><b>The PhD</b><span>02 / 08</span></div>
+      <h3>Where Accounting and Operations meet <em>Analytics and AI</em>.</h3>
+      <div class="slide-body"><p>My doctoral focus is how firms <strong>measure, disclose and act on hard-to-value information</strong>: digital assets, ESG performance and AI-generated outputs. And how investors, auditors and managers make sound decisions when that information is uncertain.</p></div>
+    </article>
+    <article class="slide" role="group" aria-roledescription="slide" aria-label="3 of 8: The idea">
+      <div class="slide-top"><b>The idea</b><span>03 / 08</span></div>
+      <h3>When a number is hard to value, its <em>reliability</em> matters as much as the number.</h3>
+      <div class="slide-body"><div class="slide-cols"><div><span>Digital assets</span>Which market and price should a firm trust when measuring crypto at fair value? My published CFV-RS score answers this.</div><div><span>ESG</span>Do firms’ sustainability words match their numbers, and does mandatory disclosure change how markets react?</div><div><span>Verifiable AI</span>Can AI outputs be explained and audited before people rely on them? SmartProof is my first step.</div></div></div>
+    </article>
+    <article class="slide" role="group" aria-roledescription="slide" aria-label="4 of 8: The skills">
+      <div class="slide-top"><b>The skills</b><span>04 / 08</span></div>
+      <h3>Trained as an accountant. Working as a <em>data researcher</em>.</h3>
+      <div class="slide-body"><div class="slide-cols"><div><span>Accounting &amp; tax</span>Fair value (ASC 820, 350-60), ESG reporting, financial reporting, tax analysis and individual tax preparation. Pursuing CPA licensure.</div><div><span>Data &amp; analytics</span>Bloomberg BQL, firm-year panel construction, Python, SQL, machine learning and explainable AI.</div><div><span>Operations &amp; systems</span>Pricing, inventory and demand analysis, KPI reporting, Power BI, blockchain and LLM pipelines.</div></div></div>
+    </article>
+    <article class="slide" role="group" aria-roledescription="slide" aria-label="5 of 8: How I work">
+      <div class="slide-top"><b>How I work</b><span>05 / 08</span></div>
+      <h3>Start from a real reporting problem. <em>Build the evidence myself.</em></h3>
+      <div class="slide-body"><p>I begin with questions practitioners actually face, then build the data from the ground up. Most recently, that meant a <strong>multi-country ESG panel</strong> spanning the US, UK, Egypt and Vietnam. I favour transparent, explainable methods over black boxes, and I work best in teams: every paper I have written is collaborative, across faculty and institutions.</p></div>
+    </article>
+    <article class="slide" role="group" aria-roledescription="slide" aria-label="6 of 8: Discipline">
+      <div class="slide-top"><b>Discipline</b><span>06 / 08</span></div>
+      <h3>Research rewards the people who <em>keep showing up</em>.</h3>
+      <div class="slide-body"><div class="slide-cols"><div><span>Consistent</span>I have kept research moving alongside full-time work and CPA preparation, one steady step at a time.</div><div><span>Disciplined</span>Clean, documented datasets and reproducible steps, so every result can be traced back to its source.</div><div><span>Diligent</span>Tax work taught me to check every number twice. I bring the same care to every variable and every table.</div></div></div>
+    </article>
+    <article class="slide" role="group" aria-roledescription="slide" aria-label="7 of 8: What I believe">
+      <div class="slide-top"><b>What I believe</b><span>07 / 08</span></div>
+      <h3>Accounting numbers are <em>promises</em> to the public.</h3>
+      <div class="slide-body"><p>Technology should make those promises <strong>easier to verify, not easier to fake</strong>. I believe rigor comes before speed, that ethics is part of measurement rather than an afterthought, and that good research should be clear enough for a practitioner to act on.</p></div>
+    </article>
+    <article class="slide" role="group" aria-roledescription="slide" aria-label="8 of 8: What’s next">
+      <div class="slide-top"><b>What’s next</b><span>08 / 08</span></div>
+      <h3>Where I see myself: an <em>independent researcher</em> and teacher.</h3>
+      <div class="slide-body"><div class="slide-cols"><div><span>During the PhD</span>Publish rigorous work on AI-assisted measurement, assurance and operations, and build a long-term research pipeline.</div><div><span>After the PhD</span>A faculty role at a research university, teaching accounting information systems and analytics.</div><div><span>Long term</span>Research that informs how standard-setters, auditors and firms govern data and AI.</div></div></div>
+    </article>
+    </div>
+    <div class="deck-nav">
+      <button class="deck-btn" id="deck-prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3 5 8l5 5"/></svg></button>
+      <div class="deck-dots" id="deck-dots"></div>
+      <button class="deck-btn" id="deck-next" type="button" aria-label="Next slide"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 3 5 5-5 5"/></svg></button>
+      <span class="deck-count" id="deck-count" aria-live="polite">01 / 08</span>
+    </div>
+  </div>
 
   <section aria-labelledby="agenda">
     <h2 id="agenda">Research agenda</h2>
@@ -381,6 +408,30 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule)
 
   <footer>Abdul Aziz Fuzail Mohammed · Updated October 2026</footer>
 </div>
+<script>
+(function () {
+  var root = document.documentElement, btn = document.getElementById('theme-btn'), label = document.getElementById('theme-label');
+  var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  var saved = null;
+  try { saved = localStorage.getItem('theme'); } catch (e) {}
+  function isDark() { var t = root.getAttribute('data-theme'); return t ? t === 'dark' : !!(mq && mq.matches); }
+  function sync() {
+    var d = isDark();
+    root.classList.toggle('is-dark', d);
+    label.textContent = d ? 'Light' : 'Dark';
+    btn.setAttribute('aria-label', d ? 'Switch to light theme' : 'Switch to dark theme');
+  }
+  if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+  btn.addEventListener('click', function () {
+    var next = isDark() ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    sync();
+  });
+  if (mq && mq.addEventListener) mq.addEventListener('change', sync);
+  sync();
+})();
+</script>
 <script>
 (function () {
   var track = document.getElementById('deck-track');
