@@ -104,12 +104,15 @@ ul.points { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 4px; font-s
 
 /* Education + skills */
 .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 36px; }
-.edu { display: grid; gap: 14px; }
+.edu { display: grid; gap: 14px; align-content: start; }
+.edu .tag-group { align-content: start; }
+.edu .tags { align-items: flex-start; align-content: flex-start; }
 .edu div { display: grid; gap: 2px; }
 .edu strong { font-weight: 600; }
 .edu span { color: var(--muted); font-size: 14.5px; }
+.edu-group { font: 600 13px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 8px 0 -4px; padding-top: 14px; border-top: 1px solid var(--rule); }
 .gpa { font-family: var(--mono); font-size: 13px; color: var(--ledger); }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tags, .edu .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tag { font-size: 13.5px; padding: 5px 10px; border: 1px solid var(--rule); border-radius: 999px; }
 .tag-group { display: grid; gap: 8px; }
 .tag-group h3 { font: 600 13px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 0; }
@@ -387,8 +390,12 @@ header .thesis { max-width: 46ch; text-wrap: balance; }
         <div><strong>MBA, Accounting &amp; Business Analytics</strong><span>University of Scranton · 2023–2025</span><span class="gpa">GPA 3.89 / 4.0</span></div>
         <div><strong>M.Com, Business &amp; Finance</strong><span>Osmania University, Hyderabad · 2021–2023</span><span class="gpa">CGPA 8.5 / 10</span></div>
         <div><strong>B.Com, Accounting &amp; Business</strong><span>Osmania University, Hyderabad · 2018–2021</span><span class="gpa">CGPA 8.5 / 10</span></div>
-        <div><strong>Beta Alpha Psi · Nu Kappa Chapter</strong><span>Lifetime member · Pursuing CPA licensure</span></div>
-        <div><strong>INFORMS · Omega Rho</strong><span>Member, Institute for Operations Research and the Management Sciences · Member, Omega Rho international honor society for operations research and management science</span></div>
+        <div><strong>CPA licensure</strong><span>In progress</span></div>
+        <h3 class="edu-group">International Honor Societies &amp; Memberships</h3>
+        <div><strong>Beta Alpha Psi · Nu Kappa Chapter</strong><span>Lifetime member · International honor society for accounting, finance and information systems</span></div>
+        <div><strong>Omega Rho</strong><span>Member · International honor society for operations research and management science</span></div>
+        <div><strong>INFORMS</strong><span>Member · Institute for Operations Research and the Management Sciences</span></div>
+        <h3 class="edu-group">Awards</h3>
         <div><strong>3rd Place, COBE Business Ethics Case Competition</strong><span>Wilkes University · 2025</span><span>Team analysis of consumer-data privacy, consent and corporate responsibility at Amazon</span></div>
       </div>
       <div class="edu">
