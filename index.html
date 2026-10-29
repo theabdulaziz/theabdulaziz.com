@@ -121,6 +121,35 @@ ul.points { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 4px; font-s
 .copied { font-size: 13px; color: var(--ledger); }
 footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule); padding-top: 18px; }
 
+/* Intro deck: a short sequence of statement slides under the name, swipeable, with keyboard and dot controls. */
+:root { --deck-bg: #15201d; --deck-ink: #edf2ef; --deck-muted: #a9bab4; --deck-accent: #8fd0c5; --deck-rule: #2c3a36; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --deck-bg: #1a2522; --deck-rule: #33433e; } }
+:root[data-theme="dark"] { --deck-bg: #1a2522; --deck-rule: #33433e; }
+.deck { position: relative; display: grid; gap: 14px; }
+.deck-track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: 12px; background: var(--deck-bg); color: var(--deck-ink); overscroll-behavior-x: contain; }
+.deck-track::-webkit-scrollbar { display: none; }
+.slide { scroll-snap-align: start; min-height: 340px; padding: clamp(26px, 5vw, 48px); display: grid; grid-template-rows: auto 1fr auto; gap: 18px; min-width: 0; }
+.slide-top { display: flex; justify-content: space-between; gap: 12px; font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--deck-muted); }
+.slide-top b { color: var(--deck-accent); font-weight: 500; }
+.slide h3 { font-family: var(--display); font-weight: 400; font-size: clamp(24px, 3.6vw, 34px); line-height: 1.22; margin: 0; max-width: 26ch; text-wrap: balance; align-self: center; }
+.slide h3 em { font-style: italic; color: var(--deck-accent); }
+.slide-body { display: grid; gap: 10px; font-size: 15.5px; line-height: 1.6; color: var(--deck-muted); max-width: 62ch; }
+.slide-body strong { color: var(--deck-ink); font-weight: 600; }
+.slide-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px 24px; }
+.slide-cols div { display: grid; gap: 4px; align-content: start; border-top: 1px solid var(--deck-rule); padding-top: 10px; }
+.slide-cols span { font: 500 11.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--deck-accent); }
+.deck-nav { display: flex; align-items: center; gap: 14px; }
+.deck-btn { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--rule); background: transparent; color: var(--ink); cursor: pointer; }
+.deck-btn:hover { border-color: var(--ledger); color: var(--ledger); }
+.deck-btn svg { width: 16px; height: 16px; }
+.deck-dots { display: flex; gap: 6px; flex: 1; }
+.deck-dot { flex: 1; max-width: 46px; height: 24px; padding: 0; border: 0; background: transparent; cursor: pointer; position: relative; }
+.deck-dot::after { content: ""; position: absolute; left: 0; right: 0; top: 11px; height: 2px; border-radius: 2px; background: var(--rule); }
+.deck-dot[aria-current="true"]::after { background: var(--ledger); }
+.deck-count { font: 500 12.5px var(--mono); color: var(--muted); min-width: 52px; text-align: right; }
+@media (prefers-reduced-motion: no-preference) { .deck-track { scroll-behavior: smooth; } .deck-btn { transition: border-color .15s, color .15s; } }
+@media (max-width: 560px) { .slide { min-height: 420px; } }
+
 @media (max-width: 560px) {
   .wrap { padding-block: 32px 48px; gap: 44px; }
   .entry { grid-template-columns: 1fr; gap: 8px; }
@@ -137,6 +166,46 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule)
   <header>
     <div class="eyebrow">Accounting &amp; Business Analytics · Prospective PhD, Fall 2027</div>
     <h1>Abdul Aziz Fuzail Mohammed</h1>
+    <div class="deck" role="region" aria-roledescription="carousel" aria-label="About my PhD goals">
+      <div class="deck-track" id="deck-track" tabindex="0">
+      <article class="slide" role="group" aria-roledescription="slide" aria-label="1 of 6: The goal">
+        <div class="slide-top"><b>The goal</b><span>01 / 06</span></div>
+        <h3>A research career built on <em>measurement people can trust</em>.</h3>
+        <div class="slide-body"><p>I am applying for a <strong>fully funded PhD</strong> in Accounting, Accounting Information Systems or Business Analytics, starting <strong>Fall 2027</strong> in the United States or Canada.</p><p>Beyond the degree, I want to spend my career producing research that standard-setters, auditors and firms can actually use, and teaching the next generation of accountants to work confidently with data and AI.</p></div>
+      </article>
+      <article class="slide" role="group" aria-roledescription="slide" aria-label="2 of 6: The PhD">
+        <div class="slide-top"><b>The PhD</b><span>02 / 06</span></div>
+        <h3>Where accounting meets <em>analytics and AI</em>.</h3>
+        <div class="slide-body"><p>My doctoral focus is how firms <strong>measure and disclose hard-to-value information</strong>: digital assets, ESG performance and AI-generated outputs. And how investors, auditors and managers make judgments when that information is uncertain.</p></div>
+      </article>
+      <article class="slide" role="group" aria-roledescription="slide" aria-label="3 of 6: The idea">
+        <div class="slide-top"><b>The idea</b><span>03 / 06</span></div>
+        <h3>When a number is hard to value, its <em>reliability</em> matters as much as the number.</h3>
+        <div class="slide-body"><div class="slide-cols"><div><span>Digital assets</span>Which market and price should a firm trust when measuring crypto at fair value? My published CFV-RS score answers this.</div><div><span>ESG</span>Do firms’ sustainability words match their numbers, and does mandatory disclosure change how markets react?</div><div><span>Verifiable AI</span>Can AI outputs be explained and audited before people rely on them? SmartProof is my first step.</div></div></div>
+      </article>
+      <article class="slide" role="group" aria-roledescription="slide" aria-label="4 of 6: The skills">
+        <div class="slide-top"><b>The skills</b><span>04 / 06</span></div>
+        <h3>Trained as an accountant. Working as a <em>data researcher</em>.</h3>
+        <div class="slide-body"><div class="slide-cols"><div><span>Accounting</span>Fair value (ASC 820, 350-60), ESG reporting, financial reporting, tax. Pursuing CPA licensure.</div><div><span>Data</span>Bloomberg BQL, firm-year panel construction, Python, SQL, machine learning and explainable AI.</div><div><span>Systems</span>Blockchain and smart contracts, LLM pipelines, Power BI dashboards, operations analytics.</div></div></div>
+      </article>
+      <article class="slide" role="group" aria-roledescription="slide" aria-label="5 of 6: How I work">
+        <div class="slide-top"><b>How I work</b><span>05 / 06</span></div>
+        <h3>Start from a real reporting problem. <em>Build the evidence myself.</em></h3>
+        <div class="slide-body"><p>I begin with questions practitioners actually face, then build the data from the ground up. Most recently, that meant a <strong>multi-country ESG panel</strong> spanning the US, UK, Egypt and Vietnam. I favour transparent, explainable methods over black boxes, and I work best in teams: every paper I have written is collaborative, across faculty and institutions.</p></div>
+      </article>
+      <article class="slide" role="group" aria-roledescription="slide" aria-label="6 of 6: What I believe">
+        <div class="slide-top"><b>What I believe</b><span>06 / 06</span></div>
+        <h3>Accounting numbers are <em>promises</em> to the public.</h3>
+        <div class="slide-body"><p>Technology should make those promises <strong>easier to verify, not easier to fake</strong>. I believe rigor comes before speed, that ethics is part of measurement rather than an afterthought, and that good research should be clear enough for a practitioner to act on.</p></div>
+      </article>
+      </div>
+      <div class="deck-nav">
+        <button class="deck-btn" id="deck-prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 3 5 8l5 5"/></svg></button>
+        <div class="deck-dots" id="deck-dots"></div>
+        <button class="deck-btn" id="deck-next" type="button" aria-label="Next slide"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m6 3 5 5-5 5"/></svg></button>
+        <span class="deck-count" id="deck-count" aria-live="polite">01 / 06</span>
+      </div>
+    </div>
     <p class="thesis">I study how analytics, AI and information systems shape the way firms measure and disclose <em>hard-to-value information</em>, and how investors and professionals make judgments with it.</p>
     <div class="meta">
       <span>MBA, Accounting &amp; Business Analytics, University of Scranton</span>
@@ -312,5 +381,50 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule)
 
   <footer>Abdul Aziz Fuzail Mohammed · Updated October 2026</footer>
 </div>
+<script>
+(function () {
+  var track = document.getElementById('deck-track');
+  if (!track) return;
+  var slides = track.querySelectorAll('.slide');
+  var dotsWrap = document.getElementById('deck-dots');
+  var count = document.getElementById('deck-count');
+  var n = slides.length, cur = 0, timer = null;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pad = function (x) { return (x < 10 ? '0' : '') + x; };
+  var dots = [];
+  for (var i = 0; i < n; i++) {
+    var d = document.createElement('button');
+    d.type = 'button'; d.className = 'deck-dot';
+    d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    d.addEventListener('click', (function (k) { return function () { stop(); go(k); }; })(i));
+    dotsWrap.appendChild(d); dots.push(d);
+  }
+  function mark(k) {
+    cur = k;
+    dots.forEach(function (d, j) { d.setAttribute('aria-current', j === k ? 'true' : 'false'); });
+    count.textContent = pad(k + 1) + ' / ' + pad(n);
+  }
+  function go(k) { k = (k + n) % n; track.scrollTo({ left: k * track.clientWidth }); mark(k); }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  document.getElementById('deck-prev').addEventListener('click', function () { stop(); go(cur - 1); });
+  document.getElementById('deck-next').addEventListener('click', function () { stop(); go(cur + 1); });
+  track.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') { e.preventDefault(); stop(); go(cur + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); stop(); go(cur - 1); }
+  });
+  var raf;
+  track.addEventListener('scroll', function () {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(function () {
+      var k = Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+      if (k !== cur && k >= 0 && k < n) mark(k);
+    });
+  }, { passive: true });
+  ['pointerdown', 'wheel', 'touchstart', 'focusin'].forEach(function (ev) { track.addEventListener(ev, stop, { passive: true }); });
+  window.addEventListener('resize', function () { track.scrollLeft = cur * track.clientWidth; });
+  mark(0);
+  if (!reduce) timer = setInterval(function () { go(cur + 1); }, 7000);
+})();
+</script>
 </body>
 </html>
