@@ -265,7 +265,7 @@ header .notice { padding: 14px 20px; }
 .ledger-tbl th:last-child, .ledger-tbl td:last-child { text-align: right; }
 .ledger-tbl td { padding: 9px 0; border-bottom: 1px dashed var(--rule); vertical-align: top; }
 .ledger-tbl td:first-child { font-family: var(--mono); font-size: 13px; color: var(--muted); width: 86px; padding-right: 10px; }
-.ledger-tbl td:last-child { font-family: var(--mono); font-size: 13px; white-space: nowrap; padding-left: 10px; }
+.ledger-tbl td:last-child { font-family: var(--mono); font-size: 13px; width: 124px; padding-left: 10px; }
 .ledger-tbl tr.total td { border-bottom: 3px double var(--rule); font-weight: 600; }
 .ledger-tbl .sub { display: block; color: var(--muted); font-size: 13px; }
 .bars { display: grid; gap: 10px; margin-top: 4px; padding-top: 14px; border-top: 1px solid var(--glass-line); }
@@ -276,7 +276,7 @@ header .notice { padding: 14px 20px; }
 .bar-row b { text-align: right; font-weight: 600; }
 @media (max-width: 560px) {
   .ledger-tbl td:first-child { width: 62px; font-size: 12px; }
-  .ledger-tbl td:last-child { font-size: 11.5px; }
+  .ledger-tbl td:last-child { font-size: 11.5px; white-space: normal; width: 92px; }
   .bar-row { grid-template-columns: 1fr 20px; } .bar-track { grid-column: 1 / -1; grid-row: 2; }
 }
 @media (prefers-reduced-motion: no-preference) { .pipe-seg .tip { transition: opacity .15s; } }
@@ -397,10 +397,10 @@ header .notice { padding: 14px 20px; }
         <table class="ledger-tbl num">
           <thead><tr><th>Period</th><th>Entry</th><th>Record</th></tr></thead>
           <tbody>
-            <tr><td>2018–21</td><td>B.Com, Accounting &amp; Business<span class="sub">Osmania University</span></td><td>8.5 / 10</td></tr>
-            <tr><td>2021–23</td><td>M.Com, Business &amp; Finance<span class="sub">Osmania University</span></td><td>8.5 / 10</td></tr>
-            <tr><td>2023–25</td><td>MBA, Accounting &amp; Business Analytics<span class="sub">University of Scranton</span></td><td>3.89 / 4.00</td></tr>
-            <tr><td>2024–25</td><td>Graduate Research Assistant<span class="sub">Kania School of Management</span></td><td>4 countries</td></tr>
+            <tr><td>2018–21</td><td>B.Com, Accounting &amp; Business<span class="sub">Osmania University</span></td><td>8.5&nbsp;/&nbsp;10</td></tr>
+            <tr><td>2021–23</td><td>M.Com, Business &amp; Finance<span class="sub">Osmania University</span></td><td>8.5&nbsp;/&nbsp;10</td></tr>
+            <tr><td>2023–25</td><td>MBA, Accounting &amp; Business Analytics<span class="sub">University of Scranton</span></td><td>3.89&nbsp;/&nbsp;4.00</td></tr>
+            <tr><td>2024–25</td><td>Graduate Research Assistant<span class="sub">Kania School of Management</span></td><td>Assisted 6&nbsp;professors</td></tr>
             <tr><td>2025–</td><td>Finance and Operations Research Analyst<span class="sub">Balajee Trade Link, USA</span></td><td>Current</td></tr>
             <tr class="total"><td>2027</td><td>PhD Admission, Fall Intake</td><td>Target</td></tr>
           </tbody>
