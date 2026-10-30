@@ -230,6 +230,57 @@ header .notice { padding: 14px 20px; }
 @media (max-width: 560px) {
   .thread, .ledger .entry, .ledger .entry:first-child, .edu { padding: 16px 16px; }
 }
+/* At a glance: KPI tiles, an ordinal pipeline bar and a ledger-style record. Numbers use tabular lining figures. */
+:root { --seq-1: #b9dbd5; --seq-2: #79b5ad; --seq-3: #3d8a83; --seq-4: #1f5f5b; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --seq-1: #2c5753; --seq-2: #3f7d75; --seq-3: #5fa69c; --seq-4: #8fd0c5; } }
+:root[data-theme="dark"] { --seq-1: #2c5753; --seq-2: #3f7d75; --seq-3: #5fa69c; --seq-4: #8fd0c5; }
+.num { font-variant-numeric: tabular-nums lining-nums; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+.kpi, .dash { --tint: var(--ledger);
+  background: linear-gradient(140deg, color-mix(in srgb, var(--tint) 10%, var(--glass-bg)) 0%, var(--glass-bg) 60%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%); backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid var(--glass-line); box-shadow: inset 0 1px 0 var(--glass-edge), var(--glass-shadow); border-radius: 14px; }
+.kpi { padding: 18px 20px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.kpi-label { font: 500 11.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.kpi-num { font-family: var(--display); font-weight: 600; font-size: 40px; line-height: 1; color: var(--ink); }
+.kpi-num small { font-size: 18px; font-weight: 400; color: var(--muted); margin-left: 4px; }
+.kpi-sub { font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+.dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.dash { padding: 20px 22px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.dash h3 { font: 600 16px var(--body); margin: 0; }
+.dash .lede { font-size: 14px; }
+.pipe { display: flex; gap: 2px; height: 28px; }
+.pipe-seg { position: relative; border-radius: 4px; outline: none; cursor: default; }
+.pipe-seg:focus-visible { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ledger); }
+.pipe-seg .tip { position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); white-space: nowrap;
+  font: 500 12.5px var(--body); color: var(--paper); background: var(--ink); padding: 5px 9px; border-radius: 6px; opacity: 0; pointer-events: none; }
+.pipe-seg:hover .tip, .pipe-seg:focus-visible .tip { opacity: 1; }
+.pipe-axis { display: flex; justify-content: space-between; font: 500 11.5px var(--mono); color: var(--muted); letter-spacing: .04em; }
+.legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 18px; margin: 0; padding: 0; list-style: none; font-size: 14px; }
+.legend li { display: flex; align-items: center; gap: 8px; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.legend b { margin-left: auto; font-weight: 600; }
+.ledger-tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
+.ledger-tbl th { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 0 0 8px; border-bottom: 1px solid var(--rule); }
+.ledger-tbl th:last-child, .ledger-tbl td:last-child { text-align: right; }
+.ledger-tbl td { padding: 9px 0; border-bottom: 1px dashed var(--rule); vertical-align: top; }
+.ledger-tbl td:first-child { font-family: var(--mono); font-size: 13px; color: var(--muted); width: 86px; padding-right: 10px; }
+.ledger-tbl td:last-child { font-family: var(--mono); font-size: 13px; white-space: nowrap; padding-left: 10px; }
+.ledger-tbl tr.total td { border-bottom: 3px double var(--rule); font-weight: 600; }
+.ledger-tbl .sub { display: block; color: var(--muted); font-size: 13px; }
+.bars { display: grid; gap: 10px; margin-top: 4px; padding-top: 14px; border-top: 1px solid var(--glass-line); }
+.bars h4 { font: 500 11.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.bar-row { display: grid; grid-template-columns: minmax(0, 1fr) 2fr 20px; align-items: center; gap: 10px; font-size: 14px; }
+.bar-track { height: 10px; border-radius: 4px; background: color-mix(in srgb, var(--rule) 55%, transparent); }
+.bar-fill { display: block; height: 100%; border-radius: 4px; background: var(--seq-3); }
+.bar-row b { text-align: right; font-weight: 600; }
+@media (max-width: 560px) {
+  .ledger-tbl td:first-child { width: 62px; font-size: 12px; }
+  .ledger-tbl td:last-child { font-size: 11.5px; }
+  .bar-row { grid-template-columns: 1fr 20px; } .bar-track { grid-column: 1 / -1; grid-row: 2; }
+}
+@media (prefers-reduced-motion: no-preference) { .pipe-seg .tip { transition: opacity .15s; } }
+@media (max-width: 560px) { .kpi-num { font-size: 34px; } .legend { grid-template-columns: 1fr; } .dash, .kpi { padding: 16px; } }
 </style>
 </head>
 <body>
@@ -308,6 +359,55 @@ header .notice { padding: 14px 20px; }
       <span class="deck-count" id="deck-count" aria-live="polite">01 / 08</span>
     </div>
   </div>
+
+  <section aria-labelledby="glance">
+    <h2 id="glance">At a Glance</h2>
+    <div class="kpis">
+      <div class="kpi"><span class="kpi-label">MBA GPA</span><span class="kpi-num num"><span data-count="3.89" data-dec="2">3.89</span><small>/ 4.00</small></span><span class="kpi-sub">University of Scranton, Accounting &amp; Business Analytics</span></div>
+      <div class="kpi"><span class="kpi-label">Research Projects</span><span class="kpi-num num"><span data-count="7">7</span></span><span class="kpi-sub">1 published · 1 under review · 2 submitted · 3 in progress</span></div>
+      <div class="kpi"><span class="kpi-label">ESG Panel Coverage</span><span class="kpi-num num"><span data-count="4">4</span><small>countries</small></span><span class="kpi-sub">United States, United Kingdom, Egypt and Vietnam</span></div>
+      <div class="kpi"><span class="kpi-label">Firm-Year Window</span><span class="kpi-num num"><span data-count="8">8</span><small>years</small></span><span class="kpi-sub">Fiscal years 2018–2025, built in Bloomberg (BQL)</span></div>
+    </div>
+    <div class="dash-grid">
+      <div class="dash">
+        <h3>Research Pipeline</h3>
+        <p class="lede">Seven projects by stage, from work in progress to publication.</p>
+        <div class="pipe" role="img" aria-label="Research pipeline: 3 in progress, 2 submitted, 1 under review, 1 published">
+          <span class="pipe-seg" tabindex="0" style="flex:3;background:var(--seq-1)"><span class="tip">In Progress · 3</span></span>
+          <span class="pipe-seg" tabindex="0" style="flex:2;background:var(--seq-2)"><span class="tip">Submitted · 2</span></span>
+          <span class="pipe-seg" tabindex="0" style="flex:1;background:var(--seq-3)"><span class="tip">Under Review · 1</span></span>
+          <span class="pipe-seg" tabindex="0" style="flex:1;background:var(--seq-4)"><span class="tip">Published · 1</span></span>
+        </div>
+        <div class="pipe-axis"><span>Early stage</span><span>Published</span></div>
+        <ul class="legend num">
+          <li><i style="background:var(--seq-1)"></i>In Progress<b>3</b></li>
+          <li><i style="background:var(--seq-2)"></i>Submitted<b>2</b></li>
+          <li><i style="background:var(--seq-3)"></i>Under Review<b>1</b></li>
+          <li><i style="background:var(--seq-4)"></i>Published<b>1</b></li>
+        </ul>
+        <div class="bars num" role="img" aria-label="Projects by theme: Digital Assets and Fair Value 3, ESG Disclosure 2, Trustworthy AI/SI 2">
+          <h4>Projects by Theme</h4>
+          <div class="bar-row"><span>Digital Assets &amp; Fair Value</span><span class="bar-track"><span class="bar-fill" style="width:100%"></span></span><b>3</b></div>
+          <div class="bar-row"><span>ESG Disclosure</span><span class="bar-track"><span class="bar-fill" style="width:66.7%"></span></span><b>2</b></div>
+          <div class="bar-row"><span>Trustworthy AI/SI</span><span class="bar-track"><span class="bar-fill" style="width:66.7%"></span></span><b>2</b></div>
+        </div>
+      </div>
+      <div class="dash">
+        <h3>Academic and Professional Ledger</h3>
+        <table class="ledger-tbl num">
+          <thead><tr><th>Period</th><th>Entry</th><th>Record</th></tr></thead>
+          <tbody>
+            <tr><td>2018–21</td><td>B.Com, Accounting &amp; Business<span class="sub">Osmania University</span></td><td>8.5 / 10</td></tr>
+            <tr><td>2021–23</td><td>M.Com, Business &amp; Finance<span class="sub">Osmania University</span></td><td>8.5 / 10</td></tr>
+            <tr><td>2023–25</td><td>MBA, Accounting &amp; Business Analytics<span class="sub">University of Scranton</span></td><td>3.89 / 4.00</td></tr>
+            <tr><td>2024–25</td><td>Graduate Research Assistant<span class="sub">Kania School of Management</span></td><td>4 countries</td></tr>
+            <tr><td>2025–</td><td>Finance and Operations Research Analyst<span class="sub">Balajee Trade Link, USA</span></td><td>Current</td></tr>
+            <tr class="total"><td>2027</td><td>PhD Admission, Fall Intake</td><td>Target</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
   <section aria-labelledby="agenda">
     <h2 id="agenda">Research Agenda</h2>
@@ -479,6 +579,21 @@ header .notice { padding: 14px 20px; }
 
   <footer>Abdul Aziz Fuzail Mohammed · Updated October 2026</footer>
 </div>
+<script>
+(function () {
+  var els = document.querySelectorAll('[data-count]');
+  if (!els.length || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function run(el) {
+    var end = parseFloat(el.getAttribute('data-count')), dec = parseInt(el.getAttribute('data-dec') || '0', 10), t0 = null, dur = 1100;
+    function step(t) { if (!t0) t0 = t; var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = (end * e).toFixed(dec); if (p < 1) requestAnimationFrame(step); else el.textContent = end.toFixed(dec); }
+    requestAnimationFrame(step);
+  }
+  var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { run(en.target); io.unobserve(en.target); } }); }, { threshold: 0.6 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
 <script>
 (function () {
   var root = document.documentElement, btn = document.getElementById('theme-btn'), label = document.getElementById('theme-label');
