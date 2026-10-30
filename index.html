@@ -301,6 +301,20 @@ header .notice { padding: 14px 20px; }
 .reveal-ready .rv.in .bar-fill { transform: scaleX(1); }
 .reveal-ready .rv .pipe { clip-path: inset(-60px 100% -60px -60px); transition: clip-path 1.1s cubic-bezier(.2,.7,.2,1) .2s; }
 .reveal-ready .rv.in .pipe { clip-path: inset(-60px -60px -60px -60px); }
+/* Contact cards */
+.contact-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+.c-card { --tint: var(--ledger); display: grid; gap: 6px; align-content: start; padding: 20px 22px; border-radius: 14px; text-decoration: none; color: var(--ink); min-width: 0;
+  background: linear-gradient(140deg, color-mix(in srgb, var(--tint) 13%, var(--glass-bg)) 0%, var(--glass-bg) 65%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%); backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid var(--glass-line); box-shadow: inset 0 1px 0 var(--glass-edge), var(--glass-shadow); }
+.c-card:hover { border-color: color-mix(in srgb, var(--tint) 45%, transparent); }
+.c-card:focus-visible { outline: 2px solid var(--tint); outline-offset: 3px; }
+.c-ico { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 10px; color: var(--tint); background: color-mix(in srgb, var(--tint) 14%, transparent); margin-bottom: 6px; }
+.c-ico svg { width: 20px; height: 20px; }
+.c-label { font: 500 11.5px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.c-val { font-weight: 600; font-size: 15.5px; overflow-wrap: anywhere; }
+.c-cta { font-size: 13.5px; color: var(--tint); margin-top: 4px; }
+@media (prefers-reduced-motion: no-preference) { .c-card { transition: border-color .2s, transform .25s; } .c-card:hover { transform: translateY(-2px); } }
 </style>
 </head>
 <body>
@@ -597,15 +611,25 @@ header .notice { padding: 14px 20px; }
 
   <section aria-labelledby="contact" id="contact">
     <h2>Contact</h2>
-    <div class="contact">
-      <p>I'm glad to hear from faculty and researchers about PhD fit, data, or collaboration.</p>
-      <div class="contact-row">
-        <a class="btn primary" href="mailto:abdulazizfuzail@gmail.com">Email me</a>
-        <span class="addr">abdulazizfuzail@gmail.com</span>
-      </div>
-      <div class="contact-row">
-        <a class="btn" href="https://www.linkedin.com/in/abdul-aziz-fuzail-mohammed-10b317308" target="_blank" rel="noopener">Message me on LinkedIn</a>
-      </div>
+    <div class="contact-cards">
+      <a class="c-card" href="mailto:abdulazizfuzail@gmail.com" style="--tint: var(--ledger)">
+        <span class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg></span>
+        <span class="c-label">Email</span>
+        <span class="c-val">abdulazizfuzail@gmail.com</span>
+        <span class="c-cta">Write to me &rarr;</span>
+      </a>
+      <a class="c-card" href="https://www.linkedin.com/in/abdul-aziz-fuzail-mohammed-10b317308" target="_blank" rel="noopener" style="--tint: var(--sub)">
+        <span class="c-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5c0-1.2-.02-2.75-1.68-2.75-1.68 0-1.94 1.3-1.94 2.66V21h-4V9.75Z"/></svg></span>
+        <span class="c-label">LinkedIn</span>
+        <span class="c-val">Abdul Aziz Fuzail Mohammed</span>
+        <span class="c-cta">Connect &rarr;</span>
+      </a>
+      <a class="c-card" href="https://github.com/theabdulaziz" target="_blank" rel="noopener" style="--tint: var(--review)">
+        <span class="c-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg></span>
+        <span class="c-label">GitHub</span>
+        <span class="c-val">github.com/theabdulaziz</span>
+        <span class="c-cta">View code &rarr;</span>
+      </a>
     </div>
   </section>
 
@@ -616,7 +640,7 @@ header .notice { padding: 14px 20px; }
   if (!('IntersectionObserver' in window)) return;
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   document.documentElement.classList.add('reveal-ready');
-  var els = document.querySelectorAll('.deck, .kpi, .dash, .thread, .ledger .entry, .edu, section > h2');
+  var els = document.querySelectorAll('.deck, .kpi, .dash, .thread, .ledger .entry, .edu, .c-card, section > h2');
   els.forEach(function (el) {
     el.classList.add('rv');
     var i = Array.prototype.indexOf.call(el.parentElement.children, el);
