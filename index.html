@@ -281,6 +281,13 @@ header .notice { padding: 14px 20px; }
 }
 @media (prefers-reduced-motion: no-preference) { .pipe-seg .tip { transition: opacity .15s; } }
 @media (max-width: 560px) { .kpi-num { font-size: 34px; } .legend { grid-template-columns: 1fr; } .dash, .kpi { padding: 16px; } }
+/* Scroll reveal: cards rise in and bars grow as they enter the viewport (JS adds .reveal-ready only when motion is allowed). */
+.reveal-ready .rv { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal-ready .rv.in { opacity: 1; transform: none; }
+.reveal-ready .rv .bar-fill { transform: scaleX(0); transform-origin: left center; transition: transform 1s cubic-bezier(.2,.7,.2,1) .25s; }
+.reveal-ready .rv.in .bar-fill { transform: scaleX(1); }
+.reveal-ready .rv .pipe { clip-path: inset(-60px 100% -60px -60px); transition: clip-path 1.1s cubic-bezier(.2,.7,.2,1) .2s; }
+.reveal-ready .rv.in .pipe { clip-path: inset(-60px -60px -60px -60px); }
 </style>
 </head>
 <body>
@@ -579,6 +586,23 @@ header .notice { padding: 14px 20px; }
 
   <footer>Abdul Aziz Fuzail Mohammed · Updated October 2026</footer>
 </div>
+<script>
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.documentElement.classList.add('reveal-ready');
+  var els = document.querySelectorAll('.deck, .kpi, .dash, .thread, .ledger .entry, .edu, section > h2');
+  els.forEach(function (el) {
+    el.classList.add('rv');
+    var i = Array.prototype.indexOf.call(el.parentElement.children, el);
+    el.style.transitionDelay = (Math.min(i, 5) * 70) + 'ms';
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
 <script>
 (function () {
   var els = document.querySelectorAll('[data-count]');
